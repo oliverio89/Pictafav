@@ -49,21 +49,6 @@ router.post('/login', (req, res, next) => {
         .catch(err => next(err));
 });
 
-// router.post('/refreshToken', isAuthenticated, (req, res, next) => {
-
-//     const tokenId = req.payload._id
-
-//     User
-//         .findById(tokenId)
-//         .then(user => {
-//             const token = user.signToken()
-//             res.json(token)
-//         })
-//         .catch(err => next(err));
-// });
-
-
-
 
 router.get('/verify', isAuthenticated, (req, res) => {
     res.status(200).json(req.payload)
