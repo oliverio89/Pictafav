@@ -1,6 +1,5 @@
 const router = require("express").Router()
 const Image = require("../models/Image.model")
-const User = require("../models/User.model")
 
 const { isAuthenticated } = require("../middleware/jwt.middleware")
 

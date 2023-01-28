@@ -60,7 +60,7 @@ const ImageDetailsPage = () => {
                     <Row>
 
                         <Col md={{ span: 4 }}>
-                            <img src={image.imageUrl} style={{ width: '100%' }} />
+                            <img src={image.imageUrl} style={{ height: '100%' }} />
                         </Col>
 
                     </Row>
