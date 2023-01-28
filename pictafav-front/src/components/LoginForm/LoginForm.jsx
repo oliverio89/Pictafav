@@ -2,7 +2,7 @@ import { useState, useContext } from "react"
 import { Form, Button } from "react-bootstrap"
 import { AuthContext } from "../../contexts/auth.context"
 import authService from "../../services/auth.service"
-import { MessageContext } from './../../contexts/userMessage.context'
+
 
 
 const LoginForm = ({ fireFinalActions }) => {
@@ -20,7 +20,6 @@ const LoginForm = ({ fireFinalActions }) => {
 
 
     const { storeToken, authenticateUser } = useContext(AuthContext)
-    const { setShowToast, setToastMessage } = useContext(MessageContext)
 
     const [errors, setErrors] = useState([])
 
@@ -34,8 +33,6 @@ const LoginForm = ({ fireFinalActions }) => {
                 const tokenFromServer = data.authToken
                 storeToken(tokenFromServer)
                 authenticateUser()
-                setShowToast(true)
-                setToastMessage('Sesión iniciada')
                 fireFinalActions()
             })
             .catch(err => {
