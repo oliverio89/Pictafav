@@ -49,18 +49,18 @@ router.post('/login', (req, res, next) => {
         .catch(err => next(err));
 });
 
-router.post('/refreshToken', isAuthenticated, (req, res, next) => {
+// router.post('/refreshToken', isAuthenticated, (req, res, next) => {
 
-    const tokenId = req.payload._id
+//     const tokenId = req.payload._id
 
-    User
-        .findById(tokenId)
-        .then(user => {
-            const token = user.signToken()
-            res.json(token)
-        })
-        .catch(err => next(err));
-});
+//     User
+//         .findById(tokenId)
+//         .then(user => {
+//             const token = user.signToken()
+//             res.json(token)
+//         })
+//         .catch(err => next(err));
+// });
 
 
 

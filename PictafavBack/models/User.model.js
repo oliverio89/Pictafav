@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const userSchema = new Schema(
 
   {
-    name: {
+    username: {
       type: String,
       required: [true, 'El nombre es obligatorio'],
       unique: true
