@@ -9,6 +9,6 @@ module.exports = app => {
   app.use("/api/user", userRoutes)
 
   const imageRoutes = require("./image.routes");
-  app.use("/api/image", imageRoutes)
+  app.use("/api/images", imageRoutes)
 
 }
