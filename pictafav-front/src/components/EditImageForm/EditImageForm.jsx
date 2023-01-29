@@ -44,7 +44,7 @@ const EditImageForm = ({ closeModal, title, imageUrl, id, loadDetails }) => {
             </Form.Group>
 
             <div className="d-grid">
-                <Button variant="warning" type="submit" >Editar Imagen</Button>
+                <Button variant="warning" type="submit" name="editar imagen">Editar Imagen</Button>
             </div>
         </Form>
     )
