@@ -18,7 +18,7 @@ router.post('/saveImage', isAuthenticated, (req, res, next) => {
 })
 
 
-router.get("/getAllImages", isAuthenticated, (req, res, next) => {
+router.get("/getAllImages", (req, res, next) => {
 
     Image
         .find()
