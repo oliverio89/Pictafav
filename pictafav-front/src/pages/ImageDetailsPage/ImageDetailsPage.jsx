@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom"
 import imagesService from "../../services/images.service"
 import { useNavigate } from "react-router-dom"
 import EditImageForm from "../../components/EditImageForm/EditImageForm"
+import './ImageDetailsPage.css'
 
 const ImageDetailsPage = () => {
 
@@ -57,16 +58,18 @@ const ImageDetailsPage = () => {
                     <h1 className="mb-4">Detalles de {image.title}</h1>
                     <hr />
 
-                    <Row>
+                    <Row className="justify-content-md-center">
 
-                        <Col md={{ span: 4 }}>
-                            <img src={image.imageUrl} style={{ height: '100%' }} />
+                        <Col >
+                            <img src={image.imageUrl} />
                         </Col>
 
                     </Row>
-                    <Button variant="danger" size="sm" onClick={() => deleteImage(image._id)}>Eliminar Imagen</Button>
 
-                    <Button onClick={openModal} variant="dark" size="sm">Editar Imagen</Button>
+
+                    <Button onClick={openModal} variant="warning" size="sm">Editar Imagen</Button>
+
+                    <Button variant="danger" size="sm" onClick={() => deleteImage(image._id)}>Eliminar Imagen</Button>
                     <Modal show={showModal} onHide={closeModal}>
                         <Modal.Header closeButton>
                             <Modal.Title>Editar Imagen</Modal.Title>
@@ -79,10 +82,13 @@ const ImageDetailsPage = () => {
                 </>
 
             }
-            <Link to="/misimagenes">
-                <Button variant="dark">Volver a Mis Imagenes</Button>
-            </Link>
 
+            <hr />
+            <Row>
+                <Link to="/misimagenes">
+                    <Button variant="dark">Volver a Mis Imagenes</Button>
+                </Link>
+            </Row>
         </Container >
     )
 }
