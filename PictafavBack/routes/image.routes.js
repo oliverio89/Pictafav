@@ -1,10 +1,12 @@
 const router = require("express").Router()
+
+
 const Image = require("../models/Image.model")
 
 const { isAuthenticated } = require("../middleware/jwt.middleware")
 
 
-router.post('/saveImage', (req, res, next) => {
+router.post('/saveImage', isAuthenticated, (req, res, next) => {
     const { title, imageUrl } = req.body
     const owner = req.payload
     console.log(req.payload)
@@ -16,32 +18,18 @@ router.post('/saveImage', (req, res, next) => {
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-router.get("/getAllImages", (req, res, next) => {
+router.get("/getAllImages", isAuthenticated, (req, res, next) => {
 
     Image
         .find()
-        .populate({ path: "owner" })
+        // .populate({ path: "owner" })
         .select({ title: 1, imageUrl: 1 })
         .then(response => setTimeout(() => res.json(response), 1000))
         .catch(err => res.status(500).json(err))
 })
 
 
-router.get("/getOneImage/:image_id", (req, res, next) => {
+router.get("/getOneImage/:image_id", isAuthenticated, (req, res, next) => {
 
     const { image_id } = req.params
 
@@ -52,7 +40,7 @@ router.get("/getOneImage/:image_id", (req, res, next) => {
 })
 
 
-router.put("/editImage/:image_id", (req, res, next) => {
+router.put("/editImage/:image_id", isAuthenticated, (req, res, next) => {
     const { image_id } = req.params
     const { title, imageUrl } = req.body
 
@@ -64,7 +52,7 @@ router.put("/editImage/:image_id", (req, res, next) => {
 })
 
 
-router.delete("/deleteImage/:image_id", (req, res, next) => {
+router.delete("/deleteImage/:image_id", isAuthenticated, (req, res, next) => {
     const { image_id } = req.params
 
     Image
