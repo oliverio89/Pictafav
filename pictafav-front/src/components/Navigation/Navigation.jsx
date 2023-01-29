@@ -82,8 +82,8 @@ const Navigation = () => {
                             </>
 
                         }
-                        <Nav.Link as="div">¡Hola, {!user ? 'invitad@' : user.username}!</Nav.Link>
                     </Nav>
+                    <Nav.Link as="div">¡Hola, {!user ? 'invitad@' : user.username}!</Nav.Link>
 
 
                 </Navbar.Collapse>
