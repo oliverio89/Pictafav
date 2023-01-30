@@ -1,14 +1,12 @@
+import React from 'react'
 import './HomePage.css'
-import Row from 'react-bootstrap/Row'
+
+const Background = "https://www.sprachcaffe.com/fileadmin/Redaktion/img/_sprachcaffe/magazine/Magazine_Espanol/heart-3147976_640.jpg";
 
 const HomePage = () => {
 
     return (
-        <Row className="justify-content-md-center">
-
-            <img src="https://www.sprachcaffe.com/fileadmin/Redaktion/img/_sprachcaffe/magazine/Magazine_Espanol/heart-3147976_640.jpg" alt='imagen de corazón con manos, inicio' />
-
-        </Row>
+        <div className="hero" />
     )
 }
 

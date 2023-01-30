@@ -10,7 +10,6 @@ router.post('/saveImage', isAuthenticated, (req, res, next) => {
     const { title, imageUrl } = req.body
     const owner = req.payload
 
-
     Image
         .create({ title, imageUrl, owner })
         .then(usuario => res.status(201).json(usuario))
@@ -20,8 +19,10 @@ router.post('/saveImage', isAuthenticated, (req, res, next) => {
 
 router.get("/getAllImages", isAuthenticated, (req, res, next) => {
 
+    const owner = req.payload
+
     Image
-        .find()
+        .find({ owner: owner._id })
         .populate({ path: "owner" })
         .select({ title: 1, imageUrl: 1 })
         .then(response => setTimeout(() => res.json(response), 1000))
@@ -43,7 +44,6 @@ router.get("/getOneImage/:image_id", isAuthenticated, (req, res, next) => {
 router.put("/editImage/:image_id", isAuthenticated, (req, res, next) => {
     const { image_id } = req.params
     const { title, imageUrl } = req.body
-
 
     Image
         .findByIdAndUpdate(image_id, { title, imageUrl })

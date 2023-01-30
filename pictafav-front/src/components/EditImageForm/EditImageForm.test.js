@@ -1,37 +1,42 @@
 import React from "react"
 import '@testing-library/jest-dom/extend-expect'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import EditImageForm from "./EditImageForm"
-import ImageDetailsPage from "../../pages/ImageDetailsPage/ImageDetailsPage"
 
+jest.mock("../../services/images.service", () => {
+    return {
+        getImages: jest.fn(() => Promise.resolve(true)),
+        getOneImage: jest.fn(() => Promise.resolve(true)),
+        saveImage: jest.fn(() => Promise.resolve(true)),
+        editImage: jest.fn(() => Promise.resolve(true)),
+        deleteImage: jest.fn(() => Promise.resolve(true))
+    }
+})
+
+let loadDetails
 beforeEach(() => {
-    render(<EditImageForm />)
+    loadDetails = jest.fn();
+    render(<EditImageForm closeModal={jest.fn} title="pretty-image" imageUrl="http://image.jpg" id='123' loadDetails={loadDetails} />)
 })
+describe('Edit image tests', () => {
+    it('should render the edit button', () => {
+        const title = screen.getByText(/editar imagen/i)
+        expect(title).toBeInTheDocument()
+    })
 
-test('render content', () => {
+    it('should render the form elements', async () => {
 
-
-    const title = screen.getByText(/editar imagen/i)
-    expect(title).toBeInTheDocument()
-    screen.debug()
-})
-
-test('should render the form elements', async () => {
-
-    const inputEl = screen.getByLabelText(/titulo/i)
-    const btnEl = screen.getByRole('button', { name: /editar imagen/i })
-
-    fireEvent.change(inputEl, { target: { value: 'gato bonito' } })
-    fireEvent.click(btnEl)
-
-    render(<ImageDetailsPage />)
-
-    const wordEditEl = await screen.findByText(/gato bonito/i)
-
-    expect(wordEditEl).toBeInTheDocument()
+        const inputEl = screen.getByLabelText(/titulo/i)
 
 
-    screen.debug()
+        fireEvent.change(inputEl, { target: { value: 'gato bonito' } })
 
+
+        const wordEditEl = await screen.findByDisplayValue(/gato bonito/i)
+
+        expect(wordEditEl).toBeInTheDocument()
+
+
+    })
 
 })

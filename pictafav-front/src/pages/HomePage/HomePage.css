@@ -1,0 +1,9 @@
+.hero {
+    background-image: url("https://fondosmil.com/fondo/2255.jpg");
+    width: 100%;
+    height: 92.3vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
