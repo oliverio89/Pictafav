@@ -1,6 +1,5 @@
 
 module.exports = app => {
-  //configurar las rutas
 
   const authRoutes = require("./auth.routes");
   app.use("/api/auth", authRoutes)

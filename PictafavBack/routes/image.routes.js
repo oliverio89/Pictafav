@@ -9,7 +9,7 @@ const { isAuthenticated } = require("../middleware/jwt.middleware")
 router.post('/saveImage', isAuthenticated, (req, res, next) => {
     const { title, imageUrl } = req.body
     const owner = req.payload
-    console.log(req.payload)
+
 
     Image
         .create({ title, imageUrl, owner })
@@ -18,11 +18,11 @@ router.post('/saveImage', isAuthenticated, (req, res, next) => {
 })
 
 
-router.get("/getAllImages", (req, res, next) => {
+router.get("/getAllImages", isAuthenticated, (req, res, next) => {
 
     Image
         .find()
-        // .populate({ path: "owner" })
+        .populate({ path: "owner" })
         .select({ title: 1, imageUrl: 1 })
         .then(response => setTimeout(() => res.json(response), 1000))
         .catch(err => res.status(500).json(err))

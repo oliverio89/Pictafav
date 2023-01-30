@@ -7,6 +7,17 @@ class ImageService {
         this.api = axios.create({
             baseURL: `${process.env.REACT_APP_API_URL}/images` || 'http://localhost:5005/api/images'
         })
+
+        this.api.interceptors.request.use((config) => {
+
+            const storedToken = localStorage.getItem("authToken");
+
+            if (storedToken) {
+                config.headers = { Authorization: `Bearer ${storedToken}` }
+            }
+
+            return config
+        })
     }
 
 

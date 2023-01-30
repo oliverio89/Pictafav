@@ -21,7 +21,6 @@ const LoginForm = ({ fireFinalActions }) => {
 
     const { storeToken, authenticateUser } = useContext(AuthContext)
 
-    const [errors, setErrors] = useState([])
 
     const handleSubmit = e => {
 
@@ -36,7 +35,7 @@ const LoginForm = ({ fireFinalActions }) => {
                 fireFinalActions()
             })
             .catch(err => {
-                setErrors(err.response.data.errorMessages)
+                console.log(err)
             })
     }
 
