@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom"
 import imagesService from "../../services/images.service"
 import { useNavigate } from "react-router-dom"
 import EditImageForm from "../../components/EditImageForm/EditImageForm"
-import newDescription from "../../components/NewDescription/NewDescription"
+import NewDescription from "../../components/NewDescription/NewDescription"
 
 import './ImageDetailsPage.css'
 
@@ -71,7 +71,7 @@ const ImageDetailsPage = () => {
 
                     <Button onClick={openModal} variant="warning" size="sm">Editar Imagen</Button>
 
-                    <Button variant="danger" size="sm" onClick={() => deleteImage(image._id)}>Eliminar Imagen</Button>
+                    <Button variant="danger" size="sm" onClick={() => deleteImage(image._id)}> Borrar </Button>
                     <Modal show={showModal} onHide={closeModal}>
                         <Modal.Header closeButton>
                             <Modal.Title>Editar Imagen</Modal.Title>
@@ -85,7 +85,7 @@ const ImageDetailsPage = () => {
 
             }
 
-            <newDescription />
+            <NewDescription />
             <hr />
 
             <Row>

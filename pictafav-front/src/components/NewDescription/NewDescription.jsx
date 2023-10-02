@@ -1,8 +1,8 @@
 import { useState } from "react"
 
-const newDescription = () => {
+const NewDescription = () => {
 
-    const [description, setDescription] = useState("un lugar maravillo")
+    const [description, setDescription] = useState("")
 
     const newTextDescription = (textDescription) => {
         setDescription(textDescription)
@@ -12,11 +12,11 @@ const newDescription = () => {
     return (
         <div>
             <p>descripción: {description}</p>
-            <input type="text" onChange={e => newTextDescription(e.target.value)} placeholder />
+            <input type="text" onClick={() => setDescription(description)} placeholder="description" />
             <hr />
         </div>
     )
 
 }
 
-export default newDescription
+export default NewDescription
