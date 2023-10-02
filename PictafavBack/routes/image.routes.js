@@ -6,6 +6,8 @@ const Image = require("../models/Image.model")
 const { isAuthenticated } = require("../middleware/jwt.middleware")
 
 
+
+
 router.post('/saveImage', isAuthenticated, (req, res, next) => {
     const { title, imageUrl } = req.body
     const owner = req.payload

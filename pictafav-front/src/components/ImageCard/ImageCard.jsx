@@ -2,6 +2,8 @@ import './ImageCard.css'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
+import newDescription from '../EditImageForm/EditImageForm'
+
 
 
 
@@ -20,6 +22,8 @@ function ImageCard({ title, imageUrl, _id }) {
                         <Button variant="dark" size="sm">Ver detalles</Button>
                     </div>
                 </Link>
+
+                <newDescription />
             </Card.Body>
         </Card>
     );
