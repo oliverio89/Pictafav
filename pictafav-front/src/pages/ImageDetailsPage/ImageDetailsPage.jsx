@@ -4,7 +4,6 @@ import { Link, useParams } from "react-router-dom"
 import imagesService from "../../services/images.service"
 import { useNavigate } from "react-router-dom"
 import EditImageForm from "../../components/EditImageForm/EditImageForm"
-import newDescription from "../../components/NewDescription/NewDescription"
 
 import './ImageDetailsPage.css'
 
@@ -85,7 +84,7 @@ const ImageDetailsPage = () => {
 
             }
 
-            <newDescription />
+
             <hr />
 
             <Row>
